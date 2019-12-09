@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+
+h1{
+	margin: center;
+}
+#list{
+	display-flex;
+}
+
+.element{
+	justify-content: center;
+}
+

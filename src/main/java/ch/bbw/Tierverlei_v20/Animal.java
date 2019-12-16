@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class Animal {
+    private int id;
+    private String type;
     private String name;
     private int age;
     private String gender;
@@ -14,7 +16,9 @@ public class Animal {
     private ArrayList<String> tags;
     private URL picture;
 
-    public Animal(String name, int age, String gender, ArrayList<String> breeds, int size, String coat, String description, ArrayList<String> tags, URL picture) {
+    public Animal(int id, String type, String name, int age, String gender, ArrayList<String> breeds, int size, String coat, String description, ArrayList<String> tags, URL picture) {
+        this.id = id;
+        this.type = type;
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -24,6 +28,22 @@ public class Animal {
         this.description = description;
         this.tags = tags;
         this.picture = picture;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {

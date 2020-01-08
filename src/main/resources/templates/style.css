@@ -5,10 +5,13 @@ h1{
 	margin: center;
 }
 #list{
-	display-flex;
+	display: flex;
+	whith: 300px;
+	
 }
 
 .element{
 	justify-content: center;
+	flex-direction: row;
 }
 

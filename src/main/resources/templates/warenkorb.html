@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>age</th>
+			<th>gender</th>
+			<th>Size</th>
+			<th>coat</th>
+			<th>Description</th>
+			<th>Remove</th>
+		</tr>
+		<tr th:each="animal : ${warenkorb}">
+			<td th:text="${animal.name}"></td>
+			<td th:text="${animal.age}"></td>
+			<td th:text="${animal.gender}"></td>
+			<td th:text="${animal.size}"></td>
+			<td th:text="${animal.coat}"></td>
+			<td th:text="${animal.description}"></td>
+			<td>
+		</tr>
+	</table>
+</body>
+</html>

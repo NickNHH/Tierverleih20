@@ -1,34 +1,14 @@
 package ch.bbw.Tierverlei_v20;
 
-import java.net.URL;
-import java.util.ArrayList;
-
 public class Animal {
     private int id;
     private String type;
-    private String name;
-    private int age;
+    private String age;
     private String gender;
-    private ArrayList<String> breeds;
-    private int size;
+    private String size;
+    private String name;
     private String coat;
     private String description;
-    private ArrayList<String> tags;
-    private URL picture;
-
-    public Animal(int id, String type, String name, int age, String gender, ArrayList<String> breeds, int size, String coat, String description, ArrayList<String> tags, URL picture) {
-        this.id = id;
-        this.type = type;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.breeds = breeds;
-        this.size = size;
-        this.coat = coat;
-        this.description = description;
-        this.tags = tags;
-        this.picture = picture;
-    }
 
     public int getId() {
         return id;
@@ -54,11 +34,11 @@ public class Animal {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -70,19 +50,11 @@ public class Animal {
         this.gender = gender;
     }
 
-    public ArrayList<String> getBreeds() {
-        return breeds;
-    }
-
-    public void setBreeds(ArrayList<String> breeds) {
-        this.breeds = breeds;
-    }
-
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
@@ -102,19 +74,8 @@ public class Animal {
         this.description = description;
     }
 
-    public ArrayList<String> getTags() {
-        return tags;
-    }
-
-    public void setTags(ArrayList<String> tags) {
-        this.tags = tags;
-    }
-
-    public URL getPicture() {
-        return picture;
-    }
-
-    public void setPicture(URL picture) {
-        this.picture = picture;
+    @Override
+    public String toString() {
+        return "animal [id=" + id + ", type=" + type + ", name=" + name +  ", age=" + age + " , gender=" + gender +  ", size=" + size +  ", coat=" + coat +  ", description=" + description + "]";
     }
 }

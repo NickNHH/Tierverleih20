@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Warenkorb</title>
 </head>
 <body>
 
+<button><a href="/index">back</a></button>
+
+<form th:each="animal, i: ${warenkorb}" th:action="@{/warenkorb}">
 	<table>
-		<tr>
+		<tr th:if="${i.first}">
+			<th>Type</th>
 			<th>Name</th>
 			<th>age</th>
 			<th>gender</th>
 			<th>Size</th>
 			<th>coat</th>
 			<th>Description</th>
-			<th>Remove</th>
+			<th>Add to Shopping Cart</th>
 		</tr>
-		<tr th:each="animal : ${warenkorb}">
-			<td th:text="${animal.name}"></td>
+
+		<tr>
+			<td th:text="${animal.type}"></td>
+			<td th:text="${animal.name}">
 			<td th:text="${animal.age}"></td>
 			<td th:text="${animal.gender}"></td>
 			<td th:text="${animal.size}"></td>
 			<td th:text="${animal.coat}"></td>
 			<td th:text="${animal.description}"></td>
-			<td>
+
+			<td><button type="submit"><a href="#"></a>Remove animal</button></td>
 		</tr>
 	</table>
 </body>

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class MainController {
     String json = "";
     String lastType = "";
+    Animal removingAnimal;
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Animal> savedAnimals = new ArrayList<>();
 
@@ -91,6 +92,7 @@ public class MainController {
 
     @GetMapping(value = "/warenkorb")
     public String warenkorb(Model model) {
+        savedAnimals.remove(removingAnimal);
         model.addAttribute("warenkorb", savedAnimals);
 
         return "warenkorb";
@@ -116,8 +118,7 @@ public class MainController {
 
         for (Animal animal : animals) {
             if (animal.getId() == id) {
-                System.out.println("remove");
-                savedAnimals.remove(animal);
+                removingAnimal = animal;
             }
         }
         model.addAttribute("warenkorb", savedAnimals);

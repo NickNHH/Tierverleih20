@@ -35,7 +35,7 @@
         </div>
     </nav>
 
-    <form method="post" th:each="animal, i: ${warenkorb}" th:action="@{/warenkorb/__${animal.id}__}">
+    <form th:method="post" th:each="animal, i: ${warenkorb}" th:action="@{/warenkorb/__${animal.id}__}">
         <table>
             <tr th:if="${i.first}">
                 <th>Type</th>

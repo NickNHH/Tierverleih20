@@ -1,28 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-	<meta charset="ISO-8859-1">
-	<title>Tierverleih 2.0 better than the older one</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Own CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+    <meta charset="ISO-8859-1">
+    <title>Tierverleih 2.0 better than the older one</title>
 
 </head>
 <body>
-	<h1>Tierverleih extended, better than the older one</h1>
 
-	<div>
-		<ul id="list">
-			<li class="element"><p><a href="animal/Dog">Dog</a></p></li>
-			<li class="element"><p><a href="animal/Cat">Cat </a></p></li>
-			<li class="element"><p><a href="animal/Rabbit">Rabbit </a></p></li>
-			<li class="element"><p><a href="animal/Hamster">Hamster </a></p></li>
-			<li class="element"><p><a href="animal/Horse">Horse </a></p></li>
-			<li class="element"><p><a href="animal/Bird">Bird </a></p></li>
-			<li class="element"><p><a href="animal/Fish">Fish </a></p></li>
-			<li class="element"><p><a href="animal/Pig">Pig</a></p></li>
-			<li class="element"><p><a href="animal/Cow">Cow </a></p></li>
-		</ul>
-	</div>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/index">Tierverleih 2.0</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/warenkorb" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        Warenkorb
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>Tierverleih extended, better than the older one</h1>
+    <ul id="list">
+        <li class="element"><p><a href="animal/Dog">Dog</a></p></li>
+        <li class="element"><p><a href="animal/Cat">Cat </a></p></li>
+        <li class="element"><p><a href="animal/Rabbit">Rabbit </a></p></li>
+        <li class="element"><p><a href="animal/Hamster">Hamster </a></p></li>
+        <li class="element"><p><a href="animal/Horse">Horse </a></p></li>
+        <li class="element"><p><a href="animal/Bird">Bird </a></p></li>
+        <li class="element"><p><a href="animal/Fish">Fish </a></p></li>
+        <li class="element"><p><a href="animal/Pig">Pig</a></p></li>
+        <li class="element"><p><a href="animal/Cow">Cow </a></p></li>
+    </ul>
+
+    <footer class="page-footer font-small">
+        <p class="footerText">You order the animals, we bring them.<a class="footerText"></a></p>
+    </footer>
+</div>
 
 </body>
 </html>

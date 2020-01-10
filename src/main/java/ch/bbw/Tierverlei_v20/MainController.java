@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 
 @Controller
 public class MainController {
+    String json = "";
+    ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Animal> savedAnimals = new ArrayList<>();
 
     private String getToken() throws IOException {
@@ -75,9 +78,25 @@ public class MainController {
         return animalListCorrectTypes;
     }
 
+    @GetMapping("/index")
+    public String homepage() {
+        if (animals.size() == 0) {
+            json = makeRequest();
+            animals = getAnimalList(json, "");
+        }
+
+        return "index";
+    }
+
+    @GetMapping(value = "/warenkorb")
+    public String warenkorb(Model model) {
+        model.addAttribute("warenkorb", savedAnimals);
+
+        return "warenkorb";
+    }
+
     @GetMapping(value = "/warenkorb/{id}")
-    public String warenkorbAdd(Model model, @PathVariable(name = "id") int id){
-        String json = makeRequest();
+    public String warenkorbAdd(Model model, @PathVariable(name = "id") int id) {
         ArrayList<Animal> animals = getAnimalList(json, "");
 
         for (Animal animal : animals) {
@@ -85,34 +104,29 @@ public class MainController {
                 savedAnimals.add(animal);
             }
         }
-        model.addAttribute( "warenkorb", savedAnimals);
+        model.addAttribute("warenkorb", savedAnimals);
 
-        return "warenkorb";
+        return "redirect:/warenkorb";
     }
 
-    @GetMapping(value = "/warenkorb?")
-    public String warenkorbRemove(Model model){
-        String json = makeRequest();
+    @PostMapping(value = "/warenkorb/{id}")
+    public String warenkorbRemove(Model model, @PathVariable(name = "id") int id) {
+        System.out.println("remove");
         ArrayList<Animal> animals = getAnimalList(json, "");
 
         for (Animal animal : animals) {
-            savedAnimals.remove(animal);
+            if (animal.getId() == id) {
+                savedAnimals.remove(animal);
+            }
         }
-        model.addAttribute( "warenkorb", savedAnimals);
+        model.addAttribute("warenkorb", savedAnimals);
 
-        return "warenkorb";
-    }
-
-    @GetMapping("/index")
-    public String homepage() {
-        return "index";
+        return "redirect:/warenkorb";
     }
 
     @GetMapping("/animal/{type}")
     public String animalType(@PathVariable String type, Model model) {
-        String json = makeRequest();
         ArrayList<Animal> animals = getAnimalList(json, type);
-
         model.addAttribute("animals", animals);
 
         return "animal";

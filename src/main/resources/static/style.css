@@ -1,31 +1,146 @@
 @charset "ISO-8859-1";
-*{
-	margin: 0;
-	padding:0;
+html {
+	height: 100%;
 }
+
+body {
+	height: 100%;
+	background-color: lightcyan;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     margin: auto;
 }
 
 #list {
     display: flex;
-	width: 80%;
-	flex-wrap: wrap;
-	justify-content: center;
+    width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
 
 }
-a, button {
-	text-decoration: none;
-	color: black;
-	font-size: 30px;
-	display: block;
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    display: block;
 }
+
 .element {
     flex-direction: row;
     list-style: none;
-	padding: 5%;
-	margin: 2%;
-	border: solid grey;
-	width: 20%;
+    padding: 5%;
+    margin: 2%;
+    border: solid grey;
+    width: 20%;
 }
 
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    text-align: center;
+    background-color: #A09FA1;
+}
+
+th.left {
+    text-align: left;
+    font-weight: bold;
+    background-color: #f1f1f1;
+}
+
+td {
+    text-align: left;
+    background-color: white;
+}
+
+nav {
+    width: 104%;
+    margin-left: -2%;
+    box-shadow: 0 -10px 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    height: 5%;
+    width: 104%;
+    margin-left: -2%;
+    background-color: #343A40;
+    box-shadow: 0 10px 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    float: bottom;
+    width: 70%;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px 10px rgba(0, 0, 0, 0.2), 0 6px 20px 10px rgba(0, 0, 0, 0.19);
+}
+
+.context {
+    float: right;
+    text-align: left;
+    width: max-content;
+}
+
+.footerText {
+    color: #9A9DA0;
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 0.3%;
+    font-size: 100%;
+}
+
+.content {
+    padding: 0 18px;
+    width: 95%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+@media only screen and (max-width: 620px) {
+    /* For mobile phones: */
+    .container {
+        width: 105%;
+        margin-left: -2%;
+    }
+
+    nav, footer {
+        width: 106.5%;
+    }
+
+    .imgCaption {
+        width: 100%;
+    }
+
+    .leftContainer {
+        width: 100%;
+    }
+
+    .footerText {
+        font-size: 5vw;
+    }
+
+    .logo {
+        width: 0;
+    }
+
+    .wrap {
+        width: 40%;
+    }
+}

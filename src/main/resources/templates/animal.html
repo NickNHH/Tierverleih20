@@ -1,43 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-	<meta charset="ISO-8859-1">
-    <title>Animal</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Own CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+    <meta charset="ISO-8859-1">
+    <title>Animal type</title>
+
 </head>
 <body>
 
-<button><a href="/index">back</a></button>
-<button><a href="/warenkorb">Warenkorb</a></button>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/index">Tierverleih 2.0</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<form th:each="animal, i: ${animals}" th:action="@{/warenkorb/__${animal.id}__}">
-    <table>
-        <tr th:if="${i.first}">
-			<th>Type</th>
-            <th>Name</th>
-            <th>age</th>
-            <th>gender</th>
-            <th>Size</th>
-            <th>coat</th>
-            <th>Description</th>
-            <th>Add to Shopping Cart</th>
-        </tr>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Home <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/warenkorb" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        Warenkorb
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-        <tr th:if="${animals.size() > 0}">
-			<td th:text="${animal.type}"></td>
-            <td th:text="${animal.name}">
-            <td th:text="${animal.age}"></td>
-            <td th:text="${animal.gender}"></td>
-            <td th:text="${animal.size}"></td>
-            <td th:text="${animal.coat}"></td>
-            <td th:text="${animal.description}"></td>
+    <form th:each="animal, i: ${animals}" th:action="@{/warenkorb/__${animal.id}__}">
+        <table>
+            <tr th:if="${i.first}">
+                <th>Type</th>
+                <th>Name</th>
+                <th>age</th>
+                <th>gender</th>
+                <th>Size</th>
+                <th>coat</th>
+                <th>Description</th>
+                <th>Add to Shopping Cart</th>
+            </tr>
 
-			<td><button type="submit"><a href="#"></a>Add animal</button></td>
-        </tr>
-		<tr th:unless="${animals.size() > 0}">
-			<td>Out of Stock</td>
-		</tr>
-    </table>
-</form>
+            <tr th:if="${animals.size() > 0}">
+                <td th:text="${animal.type}"></td>
+                <td th:text="${animal.name}">
+                <td th:text="${animal.age}"></td>
+                <td th:text="${animal.gender}"></td>
+                <td th:text="${animal.size}"></td>
+                <td th:text="${animal.coat}"></td>
+                <td th:text="${animal.description}"></td>
+
+                <td>
+                    <button type="submit"><a href="#"></a>Add animal</button>
+                </td>
+            </tr>
+            <tr th:unless="${animals.size() > 0}">
+                <td>Out of Stock</td>
+            </tr>
+        </table>
+    </form>
+
+    <footer class="page-footer font-small">
+        <p class="footerText">You order the animals, we bring them.<a class="footerText"></a></p>
+    </footer>
+</div>
 
 </body>
 </html>

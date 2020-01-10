@@ -112,11 +112,11 @@ public class MainController {
 
     @PostMapping(value = "/warenkorb/{id}")
     public String warenkorbRemove(Model model, @PathVariable(name = "id") int id) {
-        System.out.println("remove");
         ArrayList<Animal> animals = getAnimalList(json, "");
 
         for (Animal animal : animals) {
             if (animal.getId() == id) {
+                System.out.println("remove");
                 savedAnimals.remove(animal);
             }
         }

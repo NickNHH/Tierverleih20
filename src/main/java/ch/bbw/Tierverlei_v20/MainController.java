@@ -26,6 +26,7 @@ public class MainController {
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Animal> savedAnimals = new ArrayList<>();
 
+    //Get authorization token for API rest calls
     private String getToken() throws IOException {
         Reader reader = new InputStreamReader(Runtime.getRuntime().exec("curl -d \"grant_type=client_credentials&client_id=jDJ52F5MFz8ErRlpEC1QEslmqLMaJxeUNb8oIIqlVue6WXGpyJ&client_secret=gTnNRhPPaFCSLrxb1yT9dwUqKb3zxEqX0bZEnJsv\" https://api.petfinder.com/v2/oauth2/token").getInputStream());
         JsonElement jsonElement = new JsonParser().parse(reader);
@@ -34,6 +35,7 @@ public class MainController {
         return rootObject.get("access_token").getAsString();
     }
 
+    //Make get request to Animal shelter API
     private String makeRequest() {
         StringBuilder sb = null;
         try {
@@ -61,6 +63,7 @@ public class MainController {
         return sb.toString();
     }
 
+    //Get all animals based on given animalType
     private ArrayList<Animal> getAnimalList(String json, String animalType) {
         Gson gson = new Gson();
         ArrayList<Animal> animalListCorrectTypes = new ArrayList<>();
@@ -69,9 +72,11 @@ public class MainController {
         System.out.println(animalList.getAnimals());
 
         for (Animal animal : animalList.getAnimals()) {
+            //If animal matches type, add to arrayList
             if (animal.getType().equals(animalType)) {
                 animalListCorrectTypes.add(animal);
             }
+            //If no type is given, return all animals
             if (animalType.equals("")) {
                 return animalList.getAnimals();
             }
@@ -82,6 +87,7 @@ public class MainController {
 
     @GetMapping("/index")
     public String homepage() {
+        //Only make call only if arrayList is empty
         if (animals.size() == 0) {
             json = makeRequest();
             animals = getAnimalList(json, "");
@@ -92,6 +98,7 @@ public class MainController {
 
     @GetMapping(value = "/warenkorb")
     public String warenkorb(Model model) {
+        //Remove animal
         savedAnimals.remove(removingAnimal);
         model.addAttribute("warenkorb", savedAnimals);
 
@@ -102,6 +109,7 @@ public class MainController {
     public String warenkorbAdd(Model model, @PathVariable(name = "id") int id) {
         ArrayList<Animal> animals = getAnimalList(json, "");
 
+        //Loop through arrayList and check if id matches
         for (Animal animal : animals) {
             if (animal.getId() == id && !savedAnimals.contains(animal)) {
                 savedAnimals.add(animal);
@@ -116,6 +124,7 @@ public class MainController {
     public String warenkorbRemove(Model model, @PathVariable(name = "id") int id) {
         ArrayList<Animal> animals = getAnimalList(json, "");
 
+        //Loop through arrayList and add removing animal to ArrayList if id matches
         for (Animal animal : animals) {
             if (animal.getId() == id) {
                 removingAnimal = animal;
@@ -136,6 +145,7 @@ public class MainController {
 
     @GetMapping("/animal/{type}")
     public String animalType(@PathVariable String type, Model model) {
+        //Get all animals from given animal type
         ArrayList<Animal> animals = getAnimalList(json, type);
         lastType = type;
         model.addAttribute("animals", animals);

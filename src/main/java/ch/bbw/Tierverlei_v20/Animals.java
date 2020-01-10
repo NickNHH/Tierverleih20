@@ -2,7 +2,6 @@ package ch.bbw.Tierverlei_v20;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Animals {
     private ArrayList<Animal> animals;

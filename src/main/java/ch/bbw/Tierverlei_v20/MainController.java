@@ -21,6 +21,7 @@ import java.util.ArrayList;
 @Controller
 public class MainController {
     String json = "";
+    String lastType = "";
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Animal> savedAnimals = new ArrayList<>();
 
@@ -124,11 +125,20 @@ public class MainController {
         return "redirect:/warenkorb";
     }
 
-    @GetMapping("/animal/{type}")
-    public String animalType(@PathVariable String type, Model model) {
-        ArrayList<Animal> animals = getAnimalList(json, type);
+    @GetMapping(value = "/animal")
+    public String animal(Model model) {
+        ArrayList<Animal> animals = getAnimalList(json, lastType);
         model.addAttribute("animals", animals);
 
         return "animal";
+    }
+
+    @GetMapping("/animal/{type}")
+    public String animalType(@PathVariable String type, Model model) {
+        ArrayList<Animal> animals = getAnimalList(json, type);
+        lastType = type;
+        model.addAttribute("animals", animals);
+
+        return "redirect:/animal";
     }
 }
